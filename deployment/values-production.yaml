@@ -1,0 +1,29 @@
+nodejs:
+  replicaCount: 2
+  nameOverride: prod-snd-onespace
+  image:
+    repository: 414928843086.dkr.ecr.ap-southeast-1.amazonaws.com/snd-onespace
+    pullPolicy: Always
+  containerPorts:
+    - 80
+  env:
+    - name: NODE_ENV
+      value: production
+  healthCheck:
+    httpGet:
+      path: /index.html
+      port: 80
+  resources:
+    limits:
+      cpu: 600m
+      memory: 400Mi
+    requests:
+      cpu: 200m
+      memory: 128Mi
+  type: ClusterIP
+  default:
+    ports:
+      - name: prod-snd-onespace-http
+        externalPort: 80
+        internalPort: 80
+        protocol: TCP

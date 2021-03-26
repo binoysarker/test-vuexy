@@ -1,0 +1,70 @@
+/*================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+.breadcrumb-item + .breadcrumb-item::before{
+    float: none;
+}
+
+.vue-form-wizard .wizard-navigation .wizard-nav li.active a .checked{
+        -webkit-box-shadow: 0 3px 6px 0rgba(61, 162, 212, 0.7) !important;
+    box-shadow: 0 3px 6px 0 rgba(61, 162, 212, 40%) !important;
+}
+h2{
+    font-size: 1.714rem !important;
+    letter-spacing: -.0625rem !important;
+    line-height: 2.25rem !important;
+
+}
+
+.breadcrumb{
+    padding-top: 7px !important;
+}
+
+.table-active{
+    outline:none;
+}
+tr{
+    &:focus{
+        outline:1px solid #3da2d4;
+    }
+}
+.table-responsive{
+    padding: 1px;
+}
+
+.custom-radio{
+.custom-control-label{
+    margin-top:0;
+    ::before{
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    }
+    ::after{
+        opacity:0 !important;
+    }
+}
+}
+
+.custom-checkbox{
+    .custom-control-label{
+        margin-top:0;
+        ::before{
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        }
+        
+    }  
+}
+.custom-radio .custom-control-input:checked~.custom-control-label::after {
+    opacity: 0 !important;
+}
+
+.form-control:focus {
+    border-color: #3DA2D4 !important;
+}
