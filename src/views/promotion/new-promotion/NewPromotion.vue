@@ -47,17 +47,16 @@
             </b-col>
             <b-col cols="3">
               <b-button
-                  class="mb-2 col-6"
+                class="mb-2"
                 variant="primary"
               >
-                Upload
+                <span class="align-middle">Upload</span>
               </b-button>
               <br>
               <b-button
-                  class="col-6"
                 variant="outline-danger"
               >
-                Reset
+                <span class="align-middle">Reset</span>
               </b-button>
             </b-col>
           </b-row>
@@ -89,7 +88,7 @@
       </b-row>
     </tab-content>
 
-    <!-- personal info tab -->
+    <!-- Minimumn rental period -->
     <tab-content title="Minimumn rental period">
       <b-row>
         <b-col
@@ -103,15 +102,15 @@
         <b-col cols="12">
           <b-row>
             <b-col>
-              <h6 class="card-subtitle text-muted">
+              <span class="card-subtitle text-muted">
                 Title:
-              </h6>
+              </span>
               <strong>3 Months of half price</strong>
             </b-col>
             <b-col>
-              <h6 class="card-subtitle text-muted">
+              <span class="card-subtitle text-muted">
                 Discount Type:
-              </h6>
+              </span>
               <strong>15% Discount</strong>
             </b-col>
 
@@ -128,21 +127,12 @@
               :options="screen2.options"
               :aria-describedby="ariaDescribedby"
               name="plain-inline"
-              plain
+              stacked
             />
-          </b-form-group>
-        </b-col>
-        <b-col md="6">
-          <b-form-group
-            label="Country"
-            label-for="v-country1"
-          >
-            <v-select
-              id="v-country1"
+            <b-form-select
               v-model="screen2.monthSelected"
-              :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+              class="mt-2 ml-3 col-lg-6"
               :options="screen2.monthOptions"
-              label="text"
             />
           </b-form-group>
         </b-col>
@@ -163,15 +153,15 @@
         <b-col cols="12">
           <b-row>
             <b-col>
-              <h6 class="card-subtitle text-muted">
+              <span class="card-subtitle text-muted">
                 Title:
-              </h6>
+              </span>
               <strong>3 Months of half price</strong>
             </b-col>
             <b-col>
-              <h6 class="card-subtitle text-muted">
+              <span class="card-subtitle text-muted">
                 Discount Type:
-              </h6>
+              </span>
               <strong>15% Discount</strong>
             </b-col>
             <b-col>
@@ -182,66 +172,171 @@
             </b-col>
 
           </b-row>
+          <b-row class="justify-content-around">
+            <b-col>
+              <b-form-group
+                v-slot="{ ariaDescribedby1 }"
+                class="mt-3 "
+              >
+                <b-form-radio
+                  v-model="screen3.radioOptionSelected"
+                  class="mb-2"
+                  :aria-describedby="ariaDescribedby1"
+                  name="some-radios"
+                  value="A"
+                >
+                  <b-row
+                    align-v="center"
+                    class="justify-content-around"
+                  >
+                    <span class="c-maring">Percent</span>
+
+                    <b-form-input
+                      id="v-percent"
+                      v-model="screen3.percentValue"
+                      class="col-lg-6 ml-lg-3"
+
+                      type="number"
+                      placeholder="50"
+                    />
+
+                    <span class="">%</span>
+
+                  </b-row>
+
+                </b-form-radio>
+                <b-form-radio
+                  v-model="screen3.radioOptionSelected"
+                  :aria-describedby="ariaDescribedby1"
+                  name="some-radios"
+                  value="A"
+                >
+                  <b-row
+                    align-v="center"
+                    class="justify-content-around"
+                  >
+                    <span class="c-maring">Fixed quantity</span>
+
+                    <b-form-input
+                      id="v-fixed"
+                      v-model="screen3.fixedValue"
+                      class="col-lg-6"
+                      type="number"
+                      placeholder="50"
+                    />
+
+                    <span class="">SGD</span>
+
+                  </b-row>
+
+                </b-form-radio>
+              </b-form-group>
+            </b-col>
+          </b-row>
           <hr>
         </b-col>
 
       </b-row>
     </tab-content>
 
-    <!-- social link -->
-    <tab-content title="Social Links">
+    <!-- Timing -->
+    <tab-content title="Timing">
       <b-row>
         <b-col
           cols="12"
           class="mb-2"
         >
           <h5 class="mb-0">
-            Social Links
+            Your promotion:
           </h5>
-          <small class="text-muted">Enter Your Social Links</small>
+        </b-col>
+        <b-col cols="12">
+          <b-row>
+            <b-col>
+              <span class="card-subtitle text-muted">
+                Title:
+              </span>
+              <strong>3 Months of half price</strong>
+            </b-col>
+            <b-col>
+              <span class="card-subtitle text-muted">
+                Discount Type:
+              </span>
+              <strong>15% Discount</strong>
+            </b-col>
+
+          </b-row>
+          <hr>
         </b-col>
         <b-col md="6">
           <b-form-group
-            label="Twitter"
-            label-for="v-twitter"
+            v-slot="{ ariaDescribedby2 }"
           >
-            <b-form-input
-              id="v-twitter"
-              placeholder="https://twitter.com/abc"
+            <b-form-radio-group
+              v-model="screen4.selected"
+              :options="screen4.options"
+              :aria-describedby="ariaDescribedby2"
+              name="plain-inline"
+              stacked
             />
+
           </b-form-group>
         </b-col>
-        <b-col md="6">
-          <b-form-group
-            label="Facebook"
-            label-for="v-facebook"
-          >
-            <b-form-input
-              id="v-facebook"
-              placeholder="https://facebook.com/abc"
-            />
-          </b-form-group>
-        </b-col>
-        <b-col md="6">
-          <b-form-group
-            label="Google+"
-            label-for="v-google-plus"
-          >
-            <b-form-input
-              id="v-google-plus"
-              placeholder="https://plus.google.com/abc"
-            />
-          </b-form-group>
-        </b-col>
-        <b-col md="6">
-          <b-form-group
-            label="LinkedIn"
-            label-for="v-linked-in"
-          >
-            <b-form-input
-              id="v-linked-in"
-              placeholder="https://linkedin.com/abc"
-            />
+
+      </b-row>
+      <b-row>
+        <b-col>
+          <b-form-group v-slot="{ ariaDescribedby3 }">
+            <b-row
+              :aria-describedby="ariaDescribedby3"
+              align-v="end"
+              v-for="(item, ind) in 6" :key="ind"
+            >
+              <b-col>
+                <b-form-group
+                  label="Payment"
+                  label-for="v-payment"
+                >
+
+                  <b-form-select
+                    id="v-payment"
+                    v-model="screen4.monthSelected"
+                    size="sm"
+                    class=""
+                    :options="screen4.monthOptions"
+                  />
+                </b-form-group>
+              </b-col>
+              <b-col class="d-flex justify-content-around">
+                <b-form-group
+                  label-cols="4"
+                  label-cols-lg="2"
+                  label-size="sm"
+                  label="apply"
+                  label-for="input-lg"
+                >
+                  <b-form-input
+                    id="input-lg"
+                    class="col-lg-8 ml-1 d-inline-flex"
+                    size="sm"
+                    placeholder="50"
+                  />
+                  <span class="ml-1">%</span>
+                </b-form-group>
+              </b-col>
+              <b-col>
+                <b-button
+                  class="c-maring1"
+                  variant="outline-danger"
+                  size="sm"
+                >
+                  <feather-icon
+                    icon="XIcon"
+                  />
+                  <span class="align-middle">Delete</span>
+                </b-button>
+              </b-col>
+            </b-row>
           </b-form-group>
         </b-col>
       </b-row>
@@ -251,7 +346,7 @@
 
 <script>
 import { FormWizard, TabContent } from 'vue-form-wizard'
-import vSelect from 'vue-select'
+// import vSelect from 'vue-select'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import {
   BRow,
@@ -259,9 +354,11 @@ import {
   BCard,
   BButton,
   BCardText,
+  BFormRadio,
   BFormTextarea,
   BFormRadioGroup,
   BFormGroup,
+  BFormSelect,
   BFormInput,
 } from 'bootstrap-vue'
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
@@ -274,12 +371,14 @@ export default {
     BFormTextarea,
     BFormRadioGroup,
     BButton,
+    BFormRadio,
     BCard,
+    BFormSelect,
     BCardText,
     BCol,
     BFormGroup,
     BFormInput,
-    vSelect,
+    // vSelect,
     // eslint-disable-next-line vue/no-unused-components
     ToastificationContent,
   },
@@ -291,22 +390,43 @@ export default {
     }
     const screen2 = {
       selected: '',
-      monthSelected: '',
+      monthSelected: null,
       options: [
-        { text: 'First radio', value: '' },
-        { text: 'Second radio', value: 'second' },
-        { text: 'Third radio', value: 'third' },
+        { text: 'No minimun rental period required', value: 'no-minimum' },
+        { text: 'Minimum rental required', value: 'minimum' },
       ],
       monthOptions: [
-        { text: 'First radio', value: '' },
-        { text: 'Second radio', value: 'second' },
-        { text: 'Third radio', value: 'third' },
+        { text: 'select a month', value: null },
+        { text: '1 month', value: 1 },
+        { text: '2 months', value: 2 },
+        { text: '3 months', value: 3 },
       ],
+    }
+    const screen4 = {
+      selected: '',
+      monthSelected: null,
+      options: [
+        { text: 'No minimun rental period required', value: 'no-minimum' },
+        { text: 'Minimum rental required', value: 'minimum' },
+      ],
+      monthOptions: [
+        { text: 'select a month', value: null },
+        { text: '1 month', value: 1 },
+        { text: '2 months', value: 2 },
+        { text: '3 months', value: 3 },
+      ],
+    }
+    const screen3 = {
+      radioOptionSelected: '',
+      percentValue: '',
+      fixedValue: '',
     }
 
     return {
       screen1,
       screen2,
+      screen3,
+      screen4,
     }
   },
   methods: {
@@ -326,4 +446,10 @@ export default {
 <style lang="scss">
     @import '@core/scss/vue/libs/vue-wizard.scss';
     @import '@core/scss/vue/libs/vue-select.scss';
+.c-maring {
+  margin-top: -1rem;
+}
+    .c-maring1 {
+  margin-top: -3rem;
+}
 </style>
