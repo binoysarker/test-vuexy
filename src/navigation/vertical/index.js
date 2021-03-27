@@ -102,4 +102,19 @@ export default [
     // disabled: true,
 
   },
+  {
+    title: 'Promotion',
+    route: 'promotion-list',
+    icon: 'ClipboardIcon',
+    children: [
+      {
+        title: 'Promotion List',
+        route: 'promotion-list',
+      },
+      {
+        title: 'New Promotion',
+        route: 'promotion-new',
+      },
+    ],
+  },
 ]

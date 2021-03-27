@@ -15,6 +15,7 @@ import chartsMaps from './routes/charts-maps'
 import formsTable from './routes/forms-tables'
 import others from './routes/others'
 import units from './routes/units'
+import promotion from './routes/promotion'
 
 Vue.use(VueRouter)
 
@@ -35,6 +36,7 @@ const router = new VueRouter({
     ...pages,
     ...chartsMaps,
     ...formsTable,
+    ...promotion,
     ...uiElements,
     ...others,
     {
