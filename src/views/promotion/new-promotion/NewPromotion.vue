@@ -26,7 +26,7 @@
           class="mb-2"
         >
           <b-row>
-            <b-col cols="3">
+            <b-col lg="3">
               <b-card
                 :img-src="require('@/assets/images/slider/06.jpg')"
                 img-top
@@ -45,7 +45,7 @@
 
               </b-card>
             </b-col>
-            <b-col cols="3">
+            <b-col lg="3">
               <b-button
                 class="mb-2"
                 variant="primary"
@@ -120,7 +120,6 @@
         <b-col md="6">
           <b-form-group
             v-slot="{ ariaDescribedby }"
-            label="Plain inline radios"
           >
             <b-form-radio-group
               v-model="screen2.selected"
@@ -131,7 +130,7 @@
             />
             <b-form-select
               v-model="screen2.monthSelected"
-              class="mt-2 ml-3 col-lg-6"
+              class="mt-2 ml-lg-3 col-lg-6"
               :options="screen2.monthOptions"
             />
           </b-form-group>
@@ -194,7 +193,7 @@
                     <b-form-input
                       id="v-percent"
                       v-model="screen3.percentValue"
-                      class="col-lg-6 ml-lg-3"
+                      class="col-6 ml-sm-3"
 
                       type="number"
                       placeholder="50"
@@ -220,7 +219,7 @@
                     <b-form-input
                       id="v-fixed"
                       v-model="screen3.fixedValue"
-                      class="col-lg-6"
+                      class="col-5 col-sm-6"
                       type="number"
                       placeholder="50"
                     />
@@ -288,11 +287,13 @@
         <b-col>
           <b-form-group v-slot="{ ariaDescribedby3 }">
             <b-row
+              v-for="(item, ind) in 6"
+              :key="ind"
               :aria-describedby="ariaDescribedby3"
+              class="c-border"
               align-v="end"
-              v-for="(item, ind) in 6" :key="ind"
             >
-              <b-col>
+              <b-col sm="4">
                 <b-form-group
                   label="Payment"
                   label-for="v-payment"
@@ -307,9 +308,10 @@
                   />
                 </b-form-group>
               </b-col>
-              <b-col class="d-flex justify-content-around">
+              <b-col sm="4">
                 <b-form-group
-                  label-cols="4"
+                  class="d-flex justify-content-sm-around"
+                  label-cols="12"
                   label-cols-lg="2"
                   label-size="sm"
                   label="apply"
@@ -317,14 +319,14 @@
                 >
                   <b-form-input
                     id="input-lg"
-                    class="col-lg-8 ml-1 d-inline-flex"
+                    class="col-sm-7 col-lg-8 ml-lg-1 d-inline-flex"
                     size="sm"
                     placeholder="50"
                   />
                   <span class="ml-1">%</span>
                 </b-form-group>
               </b-col>
-              <b-col>
+              <b-col sm="4">
                 <b-button
                   class="c-maring1"
                   variant="outline-danger"
@@ -446,10 +448,21 @@ export default {
 <style lang="scss">
     @import '@core/scss/vue/libs/vue-wizard.scss';
     @import '@core/scss/vue/libs/vue-select.scss';
-.c-maring {
-  margin-top: -1rem;
-}
+
+  @media screen and (min-width: 576px) {
+    .c-maring {
+      margin-top: -1rem;
+    }
     .c-maring1 {
-  margin-top: -3rem;
-}
+      margin-top: -3rem;
+    }
+
+  }
+  @media screen and (max-width: 576px) {
+    .c-border {
+      border: 1px solid lightgray;
+      padding: 10px;
+      border-radius: 2px;
+    }
+  }
 </style>
