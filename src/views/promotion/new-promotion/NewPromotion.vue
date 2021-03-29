@@ -1,5 +1,6 @@
 <template>
   <form-wizard
+    ref="formWizard"
     color="#3DA2D4"
     :title="null"
     :subtitle="null"
@@ -8,7 +9,6 @@
     back-button-text="Previous"
     class="wizard-vertical mb-3"
     @on-complete="formSubmitted"
-
   >
     <template slot="prev">
       <b-button
@@ -500,6 +500,7 @@
 </template>
 
 <script>
+import { ref } from '@vue/composition-api'
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import { FormWizard, TabContent } from 'vue-form-wizard'
 // import vSelect from 'vue-select'
@@ -518,6 +519,7 @@ export default {
   },
   mixins: [commonBootstrapComponentMixin],
   setup() {
+    const formWizard = ref(null)
     const toast = useToast()
     let showFinalSection = false
     const showFormUpTo = 1
@@ -571,9 +573,11 @@ export default {
           variant: 'success',
         },
       })
+      formWizard.value.reset()
     }
 
     return {
+      formWizard,
       screen1,
       screen2,
       screen3,
@@ -586,7 +590,7 @@ export default {
 
 }
 </script>
-<style lang="scss">
+<style lang="scss" >
     @import '@core/scss/vue/libs/vue-wizard.scss';
     @import '@core/scss/vue/libs/vue-select.scss';
 
@@ -617,4 +621,14 @@ export default {
     border: 1px dot-dash #BAB8C0;
     border-radius: 5px;
   }
+    [dir] .vue-form-wizard .wizard-navigation .wizard-nav li .wizard-icon-circle.checked {
+      background-color: #3DA2D4;
+    }
+    [dir] .vue-form-wizard .wizard-navigation .wizard-nav li .wizard-icon-circle.checked i {
+      color: white;
+    }
+    /*to show all the previus item with active item as active*/
+    [dir] .vue-form-wizard .wizard-navigation .wizard-nav li a:not(.disabled) span.stepTitle {
+      color: #3DA2D4;
+    }
 </style>
