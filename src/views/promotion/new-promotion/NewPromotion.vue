@@ -9,6 +9,14 @@
     class="wizard-vertical mb-3"
     @on-complete="formSubmitted"
   >
+    <template slot="prev">
+      <b-button
+        class="mb-2"
+        variant="outline-primary"
+      >
+        <span class="align-middle">Previous</span>
+      </b-button>
+    </template>
 
     <!-- account datails tab -->
     <tab-content title="Title and description">
@@ -164,13 +172,14 @@
               <strong>15% Discount</strong>
             </b-col>
             <b-col>
-              <h6 class="card-subtitle text-muted py-3 py-sm-1">
+              <span class="card-subtitle text-muted py-3 py-sm-1">
                 Min. Rental:
-              </h6>
+              </span>
               <strong>3 Months</strong>
             </b-col>
 
           </b-row>
+          <hr>
           <b-row class="justify-content-around">
             <b-col>
               <b-form-group
@@ -184,23 +193,42 @@
                   name="some-radios"
                   value="A"
                 >
-                  <b-row
-                    align-v="center"
-                    class="justify-content-around"
-                  >
-                    <span class="c-maring">Percent</span>
+                  <b-row >
+                    <span class="ml-sm-1 mr-sm-3">Percent</span>
+                    <b-input-group class="col-sm-5">
 
-                    <b-form-input
-                      id="v-percent"
-                      v-model="screen3.percentValue"
-                      class="col-6 ml-sm-3"
+                      <b-input-group-prepend>
+                        <b-button
+                          size="sm"
+                          style="border: 1px solid #D8D6DE !important"
+                          variant="outline-secondary"
+                        >
+                          <feather-icon
+                            icon="ChevronDownIcon"
+                          />
 
-                      type="number"
-                      placeholder="50"
-                    />
+                        </b-button>
+                      </b-input-group-prepend>
 
-                    <span class="">%</span>
+                      <b-form-input
+                        v-model="screen3.percentValue"
+                        placeholder="50"
+                        type="number"
+                      />
+                      <b-input-group-append>
+                        <b-button
+                          size="sm"
+                          style="border: 1px solid #D8D6DE !important"
+                          variant="outline-secondary"
+                        >
 
+                          <feather-icon
+                            icon="ChevronUpIcon"
+                          />
+                        </b-button>
+                      </b-input-group-append>
+                    </b-input-group>
+                    <span class="ml-1">%</span>
                   </b-row>
 
                 </b-form-radio>
@@ -214,12 +242,12 @@
                     align-v="center"
                     class="justify-content-around"
                   >
-                    <span class="c-maring">Fixed quantity</span>
+                    <span class="c-maring ml-sm-1">Fixed quantity</span>
 
                     <b-form-input
                       id="v-fixed"
                       v-model="screen3.fixedValue"
-                      class="col-5 col-sm-6"
+                      class="col-5 col-sm-5"
                       type="number"
                       placeholder="50"
                     />
@@ -310,22 +338,43 @@
                   </b-form-group>
                 </b-col>
                 <b-col sm="4">
-                  <b-form-group
-                    class="d-flex justify-content-sm-around"
-                    label-cols="12"
-                    label-cols-lg="2"
-                    label-size="sm"
-                    label="apply"
-                    label-for="input-lg"
-                  >
-                    <b-form-input
-                      id="input-lg"
-                      class="col-sm-7 col-lg-8 ml-lg-1 d-inline-flex"
-                      size="sm"
-                      placeholder="50"
-                    />
+                  <b-row class="c-maring1">
+                    <span class="">apply</span>
+                    <b-input-group class="col-sm-8">
+
+                      <b-input-group-prepend>
+                        <b-button
+                            size="sm"
+                            style="border: 1px solid #D8D6DE !important"
+                            variant="outline-secondary"
+                        >
+                          <feather-icon
+                              icon="ChevronDownIcon"
+                          />
+
+                        </b-button>
+                      </b-input-group-prepend>
+
+                      <b-form-input
+                          size="sm"
+                          type="number"
+                          placeholder="50"
+                      />
+                      <b-input-group-append>
+                        <b-button
+                            size="sm"
+                            style="border: 1px solid #D8D6DE !important"
+                            variant="outline-secondary"
+                        >
+
+                          <feather-icon
+                              icon="ChevronUpIcon"
+                          />
+                        </b-button>
+                      </b-input-group-append>
+                    </b-input-group>
                     <span class="ml-1">%</span>
-                  </b-form-group>
+                  </b-row>
                 </b-col>
                 <b-col sm="4">
                   <b-button
@@ -436,13 +485,13 @@
         </b-card-text>
         <b-row class="justify-content-sm-end">
           <b-button
-              variant="outline-primary"
+            variant="outline-primary"
           >
             <span class="align-middle">See List of promotions</span>
           </b-button>
           <b-button
-              class="ml-lg-3 mr-lg-2"
-              variant="primary"
+            class="ml-lg-3 mr-lg-2"
+            variant="primary"
           >
             <span class="align-middle">Create New Promotion</span>
           </b-button>
