@@ -89,9 +89,7 @@
 </template>
 
 <script>
-import {
-  BCard, BTable, BFormCheckbox, BButton, BDropdown, BRow, BCol, BDropdownItem,
-} from 'bootstrap-vue'
+
 import { avatarText } from '@core/utils/filter'
 import { onUnmounted } from '@vue/composition-api'
 import store from '@/store'
@@ -99,26 +97,15 @@ import { FormWizard } from 'vue-form-wizard'
 import usePromitionList from './usePromotionList'
 import PromotionListFilters from './PromotionListFilters.vue'
 import promotionStoreModule from './promotionStoreModule'
+import commonBootstrapComponentMixin from '../../mixins/commonBootstrapComponents'
 
 export default {
   components: {
-    BRow,
-    BCol,
-    BButton,
-    BDropdownItem,
-    BCard,
-    // BCardText,
-    // BMediaAside,
-    // BAvatar,
-    // BMedia,
-    // BMediaBody,
-    BTable,
-    BFormCheckbox,
-    BDropdown,
     // eslint-disable-next-line vue/no-unused-components
     FormWizard,
     PromotionListFilters,
   },
+  mixins: [commonBootstrapComponentMixin],
   props: {
     tableTitle: {
       type: String,

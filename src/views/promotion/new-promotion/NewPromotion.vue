@@ -26,7 +26,7 @@
           class="mb-2"
         >
           <b-row>
-            <b-col lg="3">
+            <b-col md="3">
               <b-card
                 :img-src="require('@/assets/images/slider/06.jpg')"
                 img-top
@@ -45,7 +45,7 @@
 
               </b-card>
             </b-col>
-            <b-col lg="3">
+            <b-col md="3">
               <b-button
                 class="mb-2"
                 variant="primary"
@@ -164,7 +164,7 @@
               <strong>15% Discount</strong>
             </b-col>
             <b-col>
-              <h6 class="card-subtitle text-muted">
+              <h6 class="card-subtitle text-muted py-3 py-sm-1">
                 Min. Rental:
               </h6>
               <strong>3 Months</strong>
@@ -286,105 +286,194 @@
       <b-row>
         <b-col>
           <b-form-group v-slot="{ ariaDescribedby3 }">
-            <b-row
-              v-for="(item, ind) in 6"
-              :key="ind"
-              :aria-describedby="ariaDescribedby3"
-              class="c-border"
-              align-v="end"
-            >
-              <b-col sm="4">
-                <b-form-group
-                  label="Payment"
-                  label-for="v-payment"
-                >
+            <transition-group name="fade">
+              <b-row
+                v-for="(item, ind) in showFormUpTo"
+                :key="ind"
+                :aria-describedby="ariaDescribedby3"
+                class="c-border"
+                align-v="end"
+              >
+                <b-col sm="4">
+                  <b-form-group
+                    label="Payment"
+                    label-for="v-payment"
+                  >
 
-                  <b-form-select
-                    id="v-payment"
-                    v-model="screen4.monthSelected"
+                    <b-form-select
+                      id="v-payment"
+                      v-model="screen4.monthSelected"
+                      size="sm"
+                      class=""
+                      :options="screen4.monthOptions"
+                    />
+                  </b-form-group>
+                </b-col>
+                <b-col sm="4">
+                  <b-form-group
+                    class="d-flex justify-content-sm-around"
+                    label-cols="12"
+                    label-cols-lg="2"
+                    label-size="sm"
+                    label="apply"
+                    label-for="input-lg"
+                  >
+                    <b-form-input
+                      id="input-lg"
+                      class="col-sm-7 col-lg-8 ml-lg-1 d-inline-flex"
+                      size="sm"
+                      placeholder="50"
+                    />
+                    <span class="ml-1">%</span>
+                  </b-form-group>
+                </b-col>
+                <b-col sm="4">
+                  <b-button
+                    class="c-maring1"
+                    variant="outline-danger"
                     size="sm"
-                    class=""
-                    :options="screen4.monthOptions"
-                  />
-                </b-form-group>
-              </b-col>
-              <b-col sm="4">
-                <b-form-group
-                  class="d-flex justify-content-sm-around"
-                  label-cols="12"
-                  label-cols-lg="2"
-                  label-size="sm"
-                  label="apply"
-                  label-for="input-lg"
-                >
-                  <b-form-input
-                    id="input-lg"
-                    class="col-sm-7 col-lg-8 ml-lg-1 d-inline-flex"
-                    size="sm"
-                    placeholder="50"
-                  />
-                  <span class="ml-1">%</span>
-                </b-form-group>
-              </b-col>
-              <b-col sm="4">
-                <b-button
-                  class="c-maring1"
-                  variant="outline-danger"
-                  size="sm"
-                >
-                  <feather-icon
-                    icon="XIcon"
-                  />
-                  <span class="align-middle">Delete</span>
-                </b-button>
-              </b-col>
-            </b-row>
+                  >
+                    <feather-icon
+                      icon="XIcon"
+                    />
+                    <span class="align-middle">Delete</span>
+                  </b-button>
+                </b-col>
+              </b-row>
+
+            </transition-group>
           </b-form-group>
         </b-col>
       </b-row>
+      <hr>
+      <b-button
+        variant="primary"
+        size="md"
+        @click="showFormUpTo++"
+      >
+        <feather-icon
+          icon="PlusIcon"
+          class="mr-1"
+        />
+        <span class="align-middle">Add payment with discount</span>
+      </b-button>
+    </tab-content>
+    <!--  Final Section  -->
+    <tab-content>
+
+      <b-card>
+        <b-card-text>
+          <p class="text-center">
+            <feather-icon
+              icon="CheckCircleIcon"
+              class="font-large-1"
+            />
+          </p>
+          <h5 class="text-body-heading text-center">
+            Promotion created successfully
+          </h5>
+        </b-card-text>
+        <b-card-text class="border-dotted">
+          <b-list-group>
+            <b-list-group-item>
+              <b-row class="p-1">
+                <b-col md="3">
+                  <h6 class="card-subtitle text-muted py-3 py-sm-1">
+                    Picture:
+                  </h6>
+                </b-col>
+                <b-col>
+                  <b-img
+                    :src="require('../../../assets/images/portrait/img1.png')"
+                    thumbnail
+                  />
+                </b-col>
+              </b-row>
+              <b-row class="p-1">
+                <b-col md="3">
+                  <h6 class="card-subtitle text-muted py-3 py-sm-1">
+                    Title:
+                  </h6>
+                </b-col>
+                <b-col>
+                  <p class="card-subtitle">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio elit in egestas morbi viverra turpis urna, a. Tortor, et dui molestie id id pellentesque vulputate faucibus. Quis viverra vitae faucibus a. Urna, tristique sagittis nibh mattis tincidunt neque.
+                  </p>
+                </b-col>
+              </b-row>
+              <b-row class="p-1">
+                <b-col md="3">
+                  <h6 class="card-subtitle text-muted py-3 py-sm-1">
+                    Min. Rental:
+                  </h6>
+                </b-col>
+                <b-col>
+                  <strong class="card-subtitle">3 Months</strong>
+                </b-col>
+              </b-row>
+              <b-row class="p-1">
+                <b-col md="3">
+                  <h6 class="card-subtitle text-muted py-3 py-sm-1">
+                    Discount Type:
+                  </h6>
+                </b-col>
+                <b-col>
+                  <strong class="card-subtitle">50% Discount</strong>
+                </b-col>
+              </b-row>
+              <b-row class="p-1">
+                <b-col md="3">
+                  <h6 class="card-subtitle text-muted py-3 py-sm-1">
+                    Application Timing:
+                  </h6>
+                </b-col>
+                <b-col>
+                  <strong class="card-subtitle">1st Month, 5th Payment, 6th payment</strong>
+                </b-col>
+              </b-row>
+            </b-list-group-item>
+          </b-list-group>
+        </b-card-text>
+        <b-row class="justify-content-sm-end">
+          <b-button
+              variant="outline-primary"
+          >
+            <span class="align-middle">See List of promotions</span>
+          </b-button>
+          <b-button
+              class="ml-lg-3 mr-lg-2"
+              variant="primary"
+          >
+            <span class="align-middle">Create New Promotion</span>
+          </b-button>
+        </b-row>
+      </b-card>
     </tab-content>
   </form-wizard>
 </template>
 
 <script>
+import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import { FormWizard, TabContent } from 'vue-form-wizard'
 // import vSelect from 'vue-select'
+import { useToast } from 'vue-toastification/composition'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
-import {
-  BRow,
-  BCol,
-  BCard,
-  BButton,
-  BCardText,
-  BFormRadio,
-  BFormTextarea,
-  BFormRadioGroup,
-  BFormGroup,
-  BFormSelect,
-  BFormInput,
-} from 'bootstrap-vue'
-import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
+import commonBootstrapComponentMixin from '../../../mixins/commonBootstrapComponents'
 
 export default {
   components: {
     FormWizard,
     TabContent,
-    BRow,
-    BFormTextarea,
-    BFormRadioGroup,
-    BButton,
-    BFormRadio,
-    BCard,
-    BFormSelect,
-    BCardText,
-    BCol,
-    BFormGroup,
-    BFormInput,
+
     // vSelect,
     // eslint-disable-next-line vue/no-unused-components
     ToastificationContent,
   },
+  mixins: [commonBootstrapComponentMixin],
   setup() {
+    const toast = useToast()
+    let showFinalSection = false
+    const showFormUpTo = 1
     const screen1 = {
       name: '',
       description: '',
@@ -424,16 +513,10 @@ export default {
       fixedValue: '',
     }
 
-    return {
-      screen1,
-      screen2,
-      screen3,
-      screen4,
-    }
-  },
-  methods: {
-    formSubmitted() {
-      this.$toast({
+    // methods
+    const formSubmitted = () => {
+      showFinalSection = true
+      toast({
         component: ToastificationContent,
         props: {
           title: 'Form Submitted',
@@ -441,8 +524,19 @@ export default {
           variant: 'success',
         },
       })
-    },
+    }
+
+    return {
+      screen1,
+      screen2,
+      screen3,
+      screen4,
+      showFormUpTo,
+      showFinalSection,
+      formSubmitted,
+    }
   },
+
 }
 </script>
 <style lang="scss">
@@ -464,5 +558,12 @@ export default {
       padding: 10px;
       border-radius: 2px;
     }
+  }
+    .vue-form-wizard ul.wizard-nav > li:last-child {
+      display: none !important;
+    }
+  .border-dotted {
+    border: 1px dot-dash #BAB8C0;
+    border-radius: 5px;
   }
 </style>

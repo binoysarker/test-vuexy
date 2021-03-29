@@ -18,9 +18,6 @@
 </template>
 <script>
 import { FormWizard } from 'vue-form-wizard'
-// import {
-//   BCard, BTable, BFormCheckbox, BButton, BDropdown, BRow, BCol, BDropdownItem,
-// } from 'bootstrap-vue'
 import { ref } from '@vue/composition-api'
 import PromisionListTable from './PromisionListTable.vue'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
