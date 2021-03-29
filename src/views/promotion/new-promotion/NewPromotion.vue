@@ -1,6 +1,6 @@
 <template>
   <form-wizard
-    color="#7367F0"
+    color="#3DA2D4"
     :title="null"
     :subtitle="null"
     layout="vertical"
@@ -8,6 +8,7 @@
     back-button-text="Previous"
     class="wizard-vertical mb-3"
     @on-complete="formSubmitted"
+
   >
     <template slot="prev">
       <b-button
@@ -193,7 +194,7 @@
                   name="some-radios"
                   value="A"
                 >
-                  <b-row >
+                  <b-row>
                     <span class="ml-sm-1 mr-sm-3">Percent</span>
                     <b-input-group class="col-sm-5">
 
@@ -331,44 +332,42 @@
                     <b-form-select
                       id="v-payment"
                       v-model="screen4.monthSelected"
-                      size="sm"
                       class=""
                       :options="screen4.monthOptions"
                     />
                   </b-form-group>
                 </b-col>
                 <b-col sm="4">
-                  <b-row class="c-maring1">
+                  <b-row class="c-maring2">
                     <span class="">apply</span>
                     <b-input-group class="col-sm-8">
 
                       <b-input-group-prepend>
                         <b-button
-                            size="sm"
-                            style="border: 1px solid #D8D6DE !important"
-                            variant="outline-secondary"
+                          size="sm"
+                          style="border: 1px solid #D8D6DE !important"
+                          variant="outline-secondary"
                         >
                           <feather-icon
-                              icon="ChevronDownIcon"
+                            icon="ChevronDownIcon"
                           />
 
                         </b-button>
                       </b-input-group-prepend>
 
                       <b-form-input
-                          size="sm"
-                          type="number"
-                          placeholder="50"
+                        type="number"
+                        placeholder="50"
                       />
                       <b-input-group-append>
                         <b-button
-                            size="sm"
-                            style="border: 1px solid #D8D6DE !important"
-                            variant="outline-secondary"
+                          size="sm"
+                          style="border: 1px solid #D8D6DE !important"
+                          variant="outline-secondary"
                         >
 
                           <feather-icon
-                              icon="ChevronUpIcon"
+                            icon="ChevronUpIcon"
                           />
                         </b-button>
                       </b-input-group-append>
@@ -378,9 +377,8 @@
                 </b-col>
                 <b-col sm="4">
                   <b-button
-                    class="c-maring1"
+                    class="c-maring2"
                     variant="outline-danger"
-                    size="sm"
                   >
                     <feather-icon
                       icon="XIcon"
@@ -599,6 +597,9 @@ export default {
     .c-maring1 {
       margin-top: -3rem;
     }
+    .c-maring2 {
+      margin-top: -4rem;
+    }
 
   }
   @media screen and (max-width: 576px) {
@@ -611,6 +612,7 @@ export default {
     .vue-form-wizard ul.wizard-nav > li:last-child {
       display: none !important;
     }
+
   .border-dotted {
     border: 1px dot-dash #BAB8C0;
     border-radius: 5px;
